@@ -1,0 +1,24 @@
+---
+title: "Homework: Lubridate and Purr"
+author: "Danny Tapp"
+format: pdf
+editor: visual
+---
+
+## Question 1:
+
+```{r,warning=FALSE,message=FALSE}
+library(tidyverse)
+```
+
+```{r}
+# First we'll generate a sequence of dates going by 2 months
+dates <- seq.Date(as.Date("2015-01-01"), as.Date("2025-12-31"),by = "2 months") 
+
+#Then we extract the year, quarter, and ISO week number from that sequence 
+extracted_year <- year(dates)
+
+extracted_quarter <-quarter(dates)
+
+extracted_ISO <- isoweek(dates)
+```
