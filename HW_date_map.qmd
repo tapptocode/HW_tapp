@@ -53,3 +53,17 @@ for (i in 1:3) {
 
 month_diff
 ```
+
+## Question 3:
+
+```{r}
+### Provided list below
+num_lists <- list(c(4,16,25,36,49),c(2.3,5.7,8.1,11.4), c(10,20,30,40,50))
+
+### Getting the means, medians, and standard deviations for each of the list's vectors using map() and assigning them to n_l_*function*
+n_l_mean <- map(num_lists,mean)
+
+n_l_median <- map(num_lists,median)
+
+n_l_sd <- map(num_lists,sd)
+```
