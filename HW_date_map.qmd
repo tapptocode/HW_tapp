@@ -22,3 +22,34 @@ extracted_quarter <-quarter(dates)
 
 extracted_ISO <- isoweek(dates)
 ```
+
+## Question 2:
+
+```{r}
+sample_dates <- c("2018-03-15","2020-07-20","2023-01-10","2025-09-05")
+sample_dates <- as.Date(sample_dates) ### Converts our concatenated list into dates
+```
+
+```{r}
+week_diff <- numeric(3) ### creates an empty vector to store the differences we'll calculate
+
+### for loop to go through each consecutive pair and calculate the difftime in weeks
+### difftime is then stored in the empty vector week_diff
+for (i in 1:3) {
+  week_diff[i] <- difftime(sample_dates[i+1],sample_dates[i],units = "weeks") 
+}
+
+week_diff
+```
+
+```{r}
+month_diff <- numeric(3) ### creates an empty vector to store the differences we'll calculate
+
+### for loop but this time with time_length instead of difftime
+### month difference stored in empty vector month_diff
+for (i in 1:3) {
+  month_diff[i] <- time_length(interval(sample_dates[i],sample_dates[i+1]),"months")
+}
+
+month_diff
+```
