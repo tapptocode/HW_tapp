@@ -67,3 +67,26 @@ n_l_median <- map(num_lists,median)
 
 n_l_sd <- map(num_lists,sd)
 ```
+
+## Question 4:
+
+```{r,warning=FALSE}
+### Initial string of dates
+date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
+
+### Creating a function with possibly() to check for each date in list
+extract_month_name <- possibly(function(d_string) {
+  date <- ymd(d_string) ### First checking to see if ymd words throughout the list
+  if (is.na(date)) {
+    date <- dmy(d_string)
+  } ### If we get an NA with ymd, then we try with dmy through the list
+  if (!is.na(date)) {
+    return(format(date,"%B")) ### If we don't get NA and instead get a date, this will reformat it into returning the month's name
+  } else {
+    return(NA) ### This is to give us an NA if ymd and dmy don't work
+  }
+})
+
+month_names <- map(date_strings,extract_month_name) ### map will have our newly created function go through all of date_strings
+month_names ### print out those names
+```
