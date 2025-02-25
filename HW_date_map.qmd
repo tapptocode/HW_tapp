@@ -31,7 +31,8 @@ sample_dates <- as.Date(sample_dates) ### Converts our concatenated list into da
 ```
 
 ```{r}
-week_diff <- numeric(3) ### creates an empty vector to store the differences we'll calculate
+### creates an empty vector to store the differences we'll calculate
+week_diff <- numeric(3) 
 
 ### for loop to go through each consecutive pair and calculate the difftime in weeks
 ### difftime is then stored in the empty vector week_diff
@@ -43,7 +44,8 @@ week_diff
 ```
 
 ```{r}
-month_diff <- numeric(3) ### creates an empty vector to store the differences we'll calculate
+### creates an empty vector to store the differences we'll calculate
+month_diff <- numeric(3) 
 
 ### for loop but this time with time_length instead of difftime
 ### month difference stored in empty vector month_diff
@@ -60,7 +62,8 @@ month_diff
 ### Provided list below
 num_lists <- list(c(4,16,25,36,49),c(2.3,5.7,8.1,11.4), c(10,20,30,40,50))
 
-### Getting the means, medians, and standard deviations for each of the list's vectors using map() and assigning them to n_l_*function*
+### Getting the means, medians, and standard deviations for each of the list's vectors 
+### Using map() and assigning them to n_l_*function*
 n_l_mean <- map(num_lists,mean)
 
 n_l_median <- map(num_lists,median)
@@ -79,14 +82,17 @@ extract_month_name <- possibly(function(d_string) {
   date <- ymd(d_string) ### First checking to see if ymd words throughout the list
   if (is.na(date)) {
     date <- dmy(d_string)
-  } ### If we get an NA with ymd, then we try with dmy through the list
+  } 
+### If we get an NA with ymd, then we try with dmy through the list
   if (!is.na(date)) {
-    return(format(date,"%B")) ### If we don't get NA and instead get a date, this will reformat it into returning the month's name
+    return(format(date,"%B")) ### If we don't get NA and instead get a date, 
+### this will reformat it into returning the month's name
   } else {
     return(NA) ### This is to give us an NA if ymd and dmy don't work
   }
 })
 
-month_names <- map(date_strings,extract_month_name) ### map will have our newly created function go through all of date_strings
+month_names <- map(date_strings,extract_month_name) 
+### map will have our newly created function go through all of date_strings
 month_names ### print out those names
 ```
